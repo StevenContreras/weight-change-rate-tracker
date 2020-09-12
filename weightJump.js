@@ -23,7 +23,7 @@ function jumpNdrop(entries) {
 
 (function csvFetcher() {
   var csvFile = new XMLHttpRequest();
-  csvFile.open("GET", "file:///Users/sfcontra/Documents/code/personel-projects/weight-change-rate-tracker/Measurement-Summary-2011-02-20-to-2020-08-28.csv", true);
+  csvFile.open("GET", "file:///Users/sfcontra/Documents/code/personel-projects/weight-change-rate-tracker/csv-files/Measurement-Summary-2011-02-20-to-2020-08-28.csv", true);
   csvFile.onreadystatechange = function() {
     if(csvFile.readyState === 4) {
       if(csvFile.status === 200 || csvFile.status == 0) {
