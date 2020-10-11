@@ -62,19 +62,36 @@ const weightTracker = function(start, current, goal, days) {
   let projectedBreakLine = breakLine;
   let projectedRapidRate = rapidRate;
 
-  while (projectedRapidRate > rate && projectedDays < 365) {
+  while (projectedRapidRate > rate && projectedDays < 730) {
     projectedDays++
     projectedCurrent = projectedCurrent - rate;
     projectedBuffer = projectedCurrent * buffers.drop;
     projectedLimit = projectedCurrent * 0.001 * projectedDays + projectedBuffer; 
-    projectedBreakLine = start - projectedLimit;
     projectedRapidRate = projectedLimit / projectedDays;
+    projectedBreakLine = start - projectedLimit;
   };
   
-  if (projectedDays === 365) {
+  if (projectedDays === 730) {
     projectedDays = projectedDays.toString()
     projectedDays = "more than " + projectedDays;
   };
+  
+  function cheater(stone) {
+    let cheatCurrent = current - (buffers.drop * current) - (current * .001) + .2;
+    let cheat = {
+      days: 1,
+      rate: 0
+    }
+    while (cheatCurrent > stone && cheat.days < 182) {
+      cheat.days++;
+      cheatCurrent = cheatCurrent - (cheatCurrent * .001);
+    }
+    cheat.rate = (current - stone) / cheat.days;
+    return cheat;
+  }
+  
+  let cheatRecord = cheater(206);
+  let cheatGoal = cheater(goal);
 
   const info = `
   Today's:
@@ -85,14 +102,17 @@ const weightTracker = function(start, current, goal, days) {
   Projections: 
   At this rate you will reach your goal weight of ${goal}lbs in ${rateDays} days.
   The fastest you can healthily reach your goal is in ${fastDays} days.
+  The fastest you can cheat to your goal in ${cheatGoal.days} days at ${cheatGoal.rate}lbs a day.
   The slowest you want to reach your goal is in ${slowDays} days.
 
   At this rate you will reach your record weight of ${record}lbs in ${rateRecordDays} days.
   The fastest you can healthily reach your record is in ${recordDays} days.
+  The fastest you can cheat to your record in ${cheatRecord.days} days at ${cheatRecord.rate}lbs a day.
 
   At this rate you will cross the break line in ${projectedDays - days} days.
   with a projected break line of ${projectedBreakLine}
-  with a Rapid average daily weight loss rate of ${projectedRapidRate}`;
+  with a Rapid average daily weight loss rate of ${projectedRapidRate}
+  `;
 
   if (change > limit) {
     return "  Rapid weight loss. Increase caloric intake. \n" + info;
@@ -101,4 +121,5 @@ const weightTracker = function(start, current, goal, days) {
   return info;
 }
 
-setTimeout(function () {console.log(weightTracker(223.8, 220.4, 170, 16))}, 600);
+// setTimeout(function () {console.log(weightTracker(223.8, 217.6, 170, 26))}, 600);
+console.log(weightTracker(223.8, 213.6, 170, 37))
