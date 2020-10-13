@@ -1,25 +1,25 @@
 import React from "react";
 
-function Login() {
+function SignUp() {
 
   return (
     <main>
-      <h4>Member Login</h4>
+      <h4>Your Account Information</h4>
       <form>
         <label>Email Address:</label>
         <input></input>
         <label>Password:</label>
         <input></input>
-        <button>Log In</button>
+        <button>Continue</button>
       </form>
+      <div>Already a member?
+        <a> Log In</a>      
+      </div>
       <div>
         <a>Forgot password?</a>      
-      </div>
-      <div>Not a member?
-        <a> Sign up!</a>      
       </div>
     </main>
   )
 }
 
-export default Login;
+export default SignUp;
