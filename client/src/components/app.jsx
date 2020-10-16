@@ -6,7 +6,9 @@ function App() {
   const [login, setLogin] = useState(0)
   
   function handleLogin(e) {
-    setLogin(e);
+    let num = parseInt(e)
+    console.log(typeof num, num)
+    setLogin(num);
   }
 
   return (
@@ -15,12 +17,12 @@ function App() {
         <h1>Slim Well</h1>
       </header>
       { 
-        login === 0 
-        ?  <Login></Login>
-        : <SignUp></SignUp>
+        login === 0 ?  <Login handleLogin={handleLogin}></Login>
+        : login === 1 ? <SignUp handleLogin={handleLogin}></SignUp>
+        : <div>Profile</div>
       } 
     </div>
-  )
+  );
 }
 
 export default App;
