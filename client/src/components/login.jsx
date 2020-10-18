@@ -10,13 +10,13 @@ function Login({ handleLogin }) {
         <input></input>
         <label>Password:</label>
         <input></input>
-        <button type="button" onClick={() => handleLogin("2")} >Log In</button>
+        <button type="button" onClick={() => handleLogin("1")} >Log In</button>
       </form>
       <div>
         <a>Forgot password?</a>      
       </div>
       <div>Not a member?
-        <a type="button" onClick={() => handleLogin("1")}> Sign up!</a>      
+        <a type="button" onClick={() => handleLogin("2")}> Sign up!</a>      
       </div>
     </main>
   )

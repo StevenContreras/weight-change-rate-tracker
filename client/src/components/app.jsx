@@ -1,6 +1,8 @@
 import React, { useState }  from "react";
-import Login from "./login.jsx"
-import SignUp from "./signUp.jsx"
+import Login from "./login.jsx";
+import SignUp from "./signUp.jsx";
+import WeightData from "./weightData.jsx";
+
 
 function App() {
   const [login, setLogin] = useState(0)
@@ -18,8 +20,8 @@ function App() {
       </header>
       { 
         login === 0 ?  <Login handleLogin={handleLogin}></Login>
-        : login === 1 ? <SignUp handleLogin={handleLogin}></SignUp>
-        : <div>Profile</div>
+        : login === 1 ? <WeightData handleLogin={handleLogin}></WeightData>
+        : <SignUp handleLogin={handleLogin}></SignUp>
       } 
     </div>
   );
