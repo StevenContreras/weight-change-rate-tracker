@@ -4,8 +4,8 @@
   "description": "My webpack project",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/server.js",
     "build": "webpack --watch"
   },
   "repository": {
@@ -24,7 +24,9 @@
   },
   "homepage": "https://github.com/StevenContreras/weight-change-rate-tracker#readme",
   "dependencies": {
+    "connect-livereload": "^0.6.1",
     "express": "^4.17.1",
+    "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
@@ -36,6 +38,7 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "css-loader": "^4.3.0",
+    "livereload": "^0.9.1",
     "nodemon": "^2.0.4",
     "reload": "^3.1.1",
     "style-loader": "^2.0.0",

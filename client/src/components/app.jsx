@@ -5,7 +5,11 @@ import WeightData from "./weightData.jsx";
 
 
 function App() {
-  const [login, setLogin] = useState(0)
+  const [login, setLogin] = useState(0);
+  const [user, setUser] = useState({
+    email: '',
+    password: ''
+  });
   
   function handleLogin(e) {
     let num = parseInt(e)
@@ -19,9 +23,17 @@ function App() {
         <h1>Slim Well</h1>
       </header>
       { 
-        login === 0 ?  <Login handleLogin={handleLogin}></Login>
+        login === 0 ?  <Login 
+            handleLogin={handleLogin}
+            user={user}
+            setUser={setUser}>
+          </Login>
         : login === 1 ? <WeightData handleLogin={handleLogin}></WeightData>
-        : <SignUp handleLogin={handleLogin}></SignUp>
+        : <SignUp 
+            handleLogin={handleLogin}
+            user={user}
+            setUser={setUser}>
+          </SignUp>
       } 
     </div>
   );
